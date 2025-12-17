@@ -101,6 +101,12 @@
 
 @media (max-width: 500px) {
   .best {
+
+    &__bottom{
+      padding-top: 50px;
+      flex-direction: column;
+      gap: 40px;
+    }
     &__svg {
       width: 100%;
     }

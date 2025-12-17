@@ -1,117 +1,61 @@
 "use client";
-import React, { memo } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import "./best.scss";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.1,
-    },
-  },
-};
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 80, // 100 dan 80 gacha kamaytirildi, tezroq yakunlash uchun
-      damping: 15, // Damping qo'shildi, silliqlikni ta'minlaydi
-    },
-  },
-};
-
-const leftSideVariants = {
-  hidden: { x: -100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.6, ease: "easeOut" }, // 0.8 dan 0.6 gacha qisqartirildi
-  },
-};
-
-/**
- * Rasmni cheksiz aylantirish variantlari (Cheksiz aylanishni sekinlashtirish)
- */
-const rotateVariants = (direction) => ({
-  rotate: direction === "right" ? 360 : -360,
-  transition: {
-    duration: 45, // ✅ 30 dan 45 gacha oshirildi (tezlikni pasaytirish)
-    ease: "linear",
-    repeat: Infinity,
-    // delay olib tashlandi, chunki u keraksiz va resurs talab qiladi
-  },
-});
-
-// ✅ Komponentni memo bilan o'rash
 const Best = () => {
   return (
-    <motion.section
-      className="best"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <section className="best">
       <h2 className="what-brings__title">
         Dermozil - Tirnoq zamburug‘iga qarshi eng yaxshi vosita, tarkibida:
       </h2>
       <div className="best__bottom">
-        <motion.div className="best__left" variants={leftSideVariants}>
-          <motion.img
+        <div className="best__left">
+          <img
             className="best__img"
             src="/antileft.png"
             alt="Dermozil mahsuloti"
             loading="lazy"
+            width={400} // LCP ni yaxshilash uchun taxminiy o'lcham
+            height={400}
           />
 
-          <motion.img
+          <img
             className="best__svg"
             src="/tree.png"
             alt="Dekorativ fon rasmi"
             loading="lazy"
+            width={300}
+            height={300}
           />
-        </motion.div>
+        </div>
 
-        <motion.div className="best__right" variants={containerVariants}>
-          <motion.div className="best__items" variants={itemVariants}>
-            <motion.img
-              src="/triklozan.png"
-              loading="lazy"
-              alt="Triklozan tarkibi"
-            />
+        <div className="best__right">
+          <div className="best__items">
+            <img src="/triklozan.png" loading="lazy" alt="Triklozan tarkibi" />
             <p className="best__items-text">
               Triklozan: Yallig‘lanishga qarshi, antibakterial va zamburug‘larga
               qarshi xususiyatlarga ega
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div className="best__items" variants={itemVariants}>
-            <motion.img
-              loading="lazy"
-              src="/pentenol.png"
-              alt="D-pantenol tarkibi"
-            />
+          <div className="best__items">
+            <img loading="lazy" src="/pentenol.png" alt="D-pantenol tarkibi" />
             <p className="best__items-text">
               D - pantenol: Tirnoq plastinkasini namlaydi va yumshatadi, tirnoq
               atrofidagi terining ta’sirlanishi va quruqligini bartaraf etadi
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div className="best__items" variants={itemVariants}>
-            <motion.img loading="lazy" src="/mentol.png" alt="Mentol tarkibi" />
+          <div className="best__items">
+            <img loading="lazy" src="/mentol.png" alt="Mentol tarkibi" />
             <p className="best__items-text">
               Mentol: Oyoqlardagi og‘irlik va charchoq hissini yo‘qotadi,
               tinchlantiruvchi ta’sirga ega
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div className="best__items" variants={itemVariants}>
-            <motion.img
+          <div className="best__items">
+            <img
               loading="lazy"
               src="/moychechak.png"
               alt="Moychechak ekstrakti tarkibi"
@@ -120,10 +64,10 @@ const Best = () => {
               Moychechak ekstrakti: Teri qon aylanishini yaxshilaydi va
               yallig‘lanishga qarshi ta’sirga ega
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div className="best__items" variants={itemVariants}>
-            <motion.img
+          <div className="best__items">
+            <img
               loading="lazy"
               src="/shalfey.png"
               alt="Shalfey ekstrakti tarkibi"
@@ -132,10 +76,10 @@ const Best = () => {
               Shalfey ekstrakti: Ter bezlariga ta’sir qiladi, terlash jarayonini
               sekinlashtiradi
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div className="best__items" variants={itemVariants}>
-            <motion.img
+          <div className="best__items">
+            <img
               loading="lazy"
               src="/avitaminol.png"
               alt="A vitamini tarkibi"
@@ -143,10 +87,10 @@ const Best = () => {
             <p className="best__items-text">
               A vitamini: Quruqlik belgilari paydo bo‘lishining oldini oladi
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div className="best__items" variants={itemVariants}>
-            <motion.img
+          <div className="best__items">
+            <img
               loading="lazy"
               src="/evitaminol.png"
               alt="E vitamini tarkibi"
@@ -155,10 +99,10 @@ const Best = () => {
               E vitamini: Terining dag‘allashgan joylarini yumshatadi,
               tirnoqlarni oziqlantiradi va tiklaydi
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
